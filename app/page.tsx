@@ -10,7 +10,6 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div>
-        
         <h2>Collapsible</h2>
         <Accordion className='bg-red-500'>
           {data.map((_, i) => (
@@ -22,9 +21,7 @@ export default function Home() {
             </AccordionItem>
           ))}
         </Accordion>
-
         <br />
-
         <h2>Multiple</h2>
         <Accordion multiple>
           {data.map((_, i) => (
@@ -39,7 +36,7 @@ export default function Home() {
             </AccordionItem>
           ))}
         </Accordion>
-        </div>
+      </div>
     </main>
   );
 }
