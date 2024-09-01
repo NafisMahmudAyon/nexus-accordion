@@ -37,6 +37,14 @@ export default function Home() {
           ))}
         </Accordion>
       </div>
+      <Accordion>
+        <AccordionItem>
+          <AccordionHeader className="flex items-center justify-between "><span>FrontEnd Web Developer @ PickPlugins</span>
+            <span>Dec 2022 - Present</span>
+          </AccordionHeader>
+          <AccordionPanel>P</AccordionPanel>
+        </AccordionItem>
+      </Accordion>
     </main>
   );
 }
