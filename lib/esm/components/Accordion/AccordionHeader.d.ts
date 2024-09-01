@@ -3,6 +3,11 @@ interface AccordionHeaderProps {
     children: React.ReactNode;
     className?: string;
     activeStyle?: string;
+    iconStyle?: string;
+    openIconStyle?: string;
+    closeIconStyle?: string;
+    closeIcon?: React.ReactNode;
+    openIcon?: React.ReactNode;
 }
 export declare const AccordionHeader: React.FC<AccordionHeaderProps>;
 export {};
