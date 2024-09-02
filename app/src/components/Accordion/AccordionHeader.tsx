@@ -33,10 +33,10 @@ export const AccordionHeader: React.FC<AccordionHeaderProps> = ({
 
   return (
     <motion.div
-      className={`${className} ${isActive ? activeStyle : ""}`}
+      className={`${className} ${isActive ? activeStyle : ""} flex items-center justify-between ${iconPosition === "left" ? "flex-row-reverse" : ""} `}
       onClick={() => onChangeIndex(index)}
     >
-      <div className={`flex items-center justify-between ${iconPosition === "left" ? "flex-row-reverse" : ""}`}>
+      
         {children}
         {iconEnable && (
           <motion.div
@@ -50,7 +50,6 @@ export const AccordionHeader: React.FC<AccordionHeaderProps> = ({
             {isActive ? (<>{closeIcon ? closeIcon : <CloseIcon className={`${iconStyle} ${closeIconStyle}`} />}</>) : (<>{openIcon ? openIcon : <OpenIcon className={`${iconStyle} ${openIconStyle}`} />}</>)}
           </motion.div>
         )}
-      </div>
     </motion.div>
   );
 };
