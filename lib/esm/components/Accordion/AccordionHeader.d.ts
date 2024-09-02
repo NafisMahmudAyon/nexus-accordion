@@ -7,6 +7,7 @@ interface AccordionHeaderProps {
     openIconStyle?: string;
     closeIconStyle?: string;
     iconPosition?: "left" | "right";
+    iconEnable?: boolean;
     closeIcon?: React.ReactNode;
     openIcon?: React.ReactNode;
 }

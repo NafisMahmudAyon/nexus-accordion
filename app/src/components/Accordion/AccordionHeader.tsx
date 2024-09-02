@@ -1,6 +1,6 @@
 'use client'
 import React from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { useAccordion } from "./AccordionContext";
 import { CloseIcon, OpenIcon } from "./Icons";
 
@@ -12,6 +12,7 @@ interface AccordionHeaderProps {
   openIconStyle?: string;
   closeIconStyle?: string;
   iconPosition?: "left" | "right";
+  iconEnable?: boolean;
   closeIcon?: React.ReactNode;
   openIcon?: React.ReactNode;
 }
@@ -24,8 +25,9 @@ export const AccordionHeader: React.FC<AccordionHeaderProps> = ({
   closeIconStyle = "",
   openIconStyle = "",
   iconPosition = "right",
+  iconEnable = true,
   openIcon = <OpenIcon className={`${iconStyle} ${openIconStyle}`} />,
-  closeIcon = <CloseIcon className={`${iconStyle} ${closeIconStyle}`} />
+  closeIcon
 }) => {
   const { isActive, index, onChangeIndex } = useAccordion();
 
@@ -34,61 +36,21 @@ export const AccordionHeader: React.FC<AccordionHeaderProps> = ({
       className={`${className} ${isActive ? activeStyle : ""}`}
       onClick={() => onChangeIndex(index)}
     >
-      {iconPosition === "left" &&
-        <AnimatePresence initial={false}>
-          {isActive ? (
-            <motion.div
-              key="close"
-              initial={{ rotate: 0, opacity: 0 }}
-              animate={{ rotate: 180, opacity: 1 }}
-              exit={{ rotate: -90, opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className={`${iconStyle} ${closeIconStyle}`}
-            >
-              {closeIcon}
-            </motion.div>
-          ) : (
-            <motion.div
-              key="open"
-              initial={{ rotate: 0, opacity: 0 }}
-              animate={{ rotate: 180, opacity: 1 }}
-              exit={{ rotate: 90, opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className={`${iconStyle} ${openIconStyle}`}
-            >
-              {openIcon}
-            </motion.div>
-          )}
-        </AnimatePresence>
-      }
-      {children}
-      {iconPosition === "right" &&
-        <AnimatePresence initial={false}>
-          {isActive ? (
-            <motion.div
-              key="close"
-              initial={{ rotate: 0, opacity: 0 }}
-              animate={{ rotate: 180, opacity: 1 }}
-              exit={{ rotate: -90, opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className={`${iconStyle} ${closeIconStyle}`}
-            >
-              {closeIcon}
-            </motion.div>
-          ) : (
-            <motion.div
-              key="open"
-              initial={{ rotate: 0, opacity: 0 }}
-              animate={{ rotate: 180, opacity: 1 }}
-              exit={{ rotate: 90, opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className={`${iconStyle} ${openIconStyle}`}
-            >
-              {openIcon}
-            </motion.div>
-          )}
-        </AnimatePresence>
-      }
+      <div className={`flex items-center justify-between ${iconPosition === "left" ? "flex-row-reverse" : ""}`}>
+        {children}
+        {iconEnable && (
+          <motion.div
+            key={isActive ? "close" : "open"}
+            initial={{ rotate: 0, opacity: 0 }}
+            animate={{ rotate: 360, opacity: 1 }}
+            exit={{ rotate: 0, opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className={`${iconStyle} ${isActive ? closeIconStyle : openIconStyle}`}
+          >
+            {isActive ? (<>{closeIcon ? closeIcon : <CloseIcon className={`${iconStyle} ${closeIconStyle}`} />}</>) : (<>{openIcon ? openIcon : <OpenIcon className={`${iconStyle} ${openIconStyle}`} />}</>)}
+          </motion.div>
+        )}
+      </div>
     </motion.div>
   );
 };
