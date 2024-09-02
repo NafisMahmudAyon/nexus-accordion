@@ -37,19 +37,81 @@ export default function Home() {
           ))}
         </Accordion>
       </div>
-      <Accordion className='p-4 border '>
-        <AccordionItem>
-          <AccordionHeader className={`flex items-center justify-between gap-3  `} iconStyle='text-primaryColor' openIcon={<svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 448 512" fill="currentColor" >
-            <path d="M400 32H48A48 48 0 0 0 0 80v352a48 48 0 0 0 48 48h137.25V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.27c-30.81 0-40.42 19.12-40.42 38.73V256h68.78l-11 71.69h-57.78V480H400a48 48 0 0 0 48-48V80a48 48 0 0 0-48-48z" />
-          </svg>}>
-            <div className='flex flex-1 items-center justify-between text-headingText dark:text-headingDarkText'>
-              <span className=''>FrontEnd Web Developer @ PickPlugins</span>
+      <Accordion defaultIndex={0}>
+        <AccordionItem className="p-4 border mb-4 rounded-md">
+          <AccordionHeader
+            className={`gap-3 cursor-pointer `}
+            activeStyle="pb-2 border-b"
+            iconStyle="text-primaryColor w-4"
+          >
+            <div className="flex flex-1 items-center justify-between text-headingText dark:text-headingDarkText">
+              <span className="font-semibold">FrontEnd Web Developer @ PickPlugins</span>
               <span>Dec 2022 - Present</span>
             </div>
           </AccordionHeader>
-          <AccordionPanel>P</AccordionPanel>
+          <AccordionPanel className="pt-2">
+            <div className="flex items-center gap-8 text-sm text-normalText dark:text-normalDarkText">
+              <span className="flex items-center gap-1 text-headingText dark:text-headingDarkText">
+                
+                <span>Rangpur, Bangladesh</span>
+              </span>
+              <span className="flex items-center gap-1 text-headingText dark:text-headingDarkText">
+                
+                <span>pickplugins.com</span>
+              </span>
+            </div>
+            <div className="text-headingText dark:text-headingDarkText py-3">
+              Developing WordPress plugins in PickPlugins, Tech used React, PHP, JavaScript.
+            </div>
+            <div className="flex items-center gap-2 text-xs font-extralight">
+              {["HTML", "CSS", "JS", "PHP", "React", "WordPress", "JSON", "API", "Tailwind"].map((tag, i) => {
+                return (
+                  <span key={i} className="px-2 py-1 text-normalText dark:text-normalDarkText bg-[#dfe8f1] dark:bg-[#353535] rounded-md">
+                    {tag}
+                  </span>
+                );
+              })}
+            </div>
+          </AccordionPanel>
+        </AccordionItem>
+        <AccordionItem className="p-4 border mb-4 rounded-md">
+          <AccordionHeader
+            className={`gap-3 cursor-pointer`}
+            activeStyle="pb-2 border-b"
+            iconStyle="text-primaryColor w-4"
+          >
+            <div className="flex flex-1 items-center justify-between text-headingText dark:text-headingDarkText">
+              <span className="font-semibold">Full Stack Web Developer @ Freelancer</span>
+              <span>Dec 2020 - Present</span>
+            </div>
+          </AccordionHeader>
+          <AccordionPanel className="pt-2">
+            <div className="flex items-center gap-8 text-sm text-normalText dark:text-normalDarkText">
+              <span className="flex items-center gap-1 text-headingText dark:text-headingDarkText">
+               
+                <span>Worldwide</span>
+              </span>
+              <span className="flex items-center gap-1 text-headingText dark:text-headingDarkText">
+                
+                <span>fiverr.com</span>
+              </span>
+            </div>
+            <div className="text-headingText dark:text-headingDarkText py-3">
+              Developed Full Stack web application, Tech used React, JavaScript, PHP.
+            </div>
+            <div className="flex items-center gap-2 text-xs font-extralight">
+              {["HTML", "CSS", "JS", "PHP", "React", "WordPress", "JSON", "API", "Tailwind"].map((tag, i) => {
+                return (
+                  <span key={i} className="px-2 py-1 text-normalText dark:text-normalDarkText bg-[#dfe8f1] dark:bg-[#353535] rounded-md">
+                    {tag}
+                  </span>
+                );
+              })}
+            </div>
+          </AccordionPanel>
         </AccordionItem>
       </Accordion>
+
     </main>
   );
 }

@@ -4,6 +4,7 @@ interface AccordionProps {
     multiple?: boolean;
     defaultIndex?: number | number[];
     className?: string;
+    activateOnLoad?: boolean;
 }
 export declare const Accordion: React.FC<AccordionProps>;
 export {};

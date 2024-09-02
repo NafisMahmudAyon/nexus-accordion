@@ -1,5 +1,6 @@
+//Accordion.tsx
 'use client'
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { AccordionContext } from "./AccordionContext";
 
 interface AccordionProps {
@@ -7,10 +8,23 @@ interface AccordionProps {
   multiple?: boolean;
   defaultIndex?: number | number[];
   className?: string;
+  activateOnLoad?: boolean; // New prop
 }
 
-export const Accordion: React.FC<AccordionProps> = ({ children, multiple = false, className="", defaultIndex = multiple ? [] : -1 }) => {
+export const Accordion: React.FC<AccordionProps> = ({
+  children,
+  multiple = false,
+  className = "",
+  defaultIndex = multiple ? [] : -1,
+  activateOnLoad = false // Default is false
+}) => {
   const [activeIndex, setActiveIndex] = useState<number | number[]>(defaultIndex);
+
+  useEffect(() => {
+    if (activateOnLoad && defaultIndex !== -1) {
+      setActiveIndex(defaultIndex);
+    }
+  }, [activateOnLoad, defaultIndex]);
 
   const onChangeIndex = (index: number) => {
     setActiveIndex((currentActiveIndex) => {
